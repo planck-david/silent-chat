@@ -95,6 +95,14 @@
           return;
         }
         let chatInfo = this.chatInfo.trim()
+        let idx = chatInfo.lastIndexOf(':')
+        if (idx < 0) {
+          idx = chatInfo.lastIndexOf('：')
+        }
+        if (idx != -1) {
+          chatInfo = chatInfo.substr(idx+1)
+        }
+
         if (chatInfo == null || chatInfo.length < 1) {
           Message.alert('请输入待解密内容', '错误提示');
           return;
