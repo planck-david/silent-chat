@@ -16,7 +16,7 @@
         </mu-col>
       </mu-row>
 
-      <div style="max-height: 600px;overflow-y: auto;">
+      <div style="max-height: 500px;overflow-y: auto;">
         <mu-row>
           <mu-col span="12">
             <message-list ref="messageList"></message-list>
@@ -30,7 +30,9 @@
                          full-width placeholder="请输入需要加密的内容"></mu-text-field>
         </mu-col>
         <mu-col span="4">
-          <mu-button color="primary" @click="doSend">发送</mu-button>
+          <mu-button color="primary" @click="doSend" small>发送</mu-button>
+          <br/> <br/>
+          <mu-button   @click="clearWord" small>清空</mu-button>
         </mu-col>
       </mu-row>
 
@@ -41,7 +43,9 @@
                          full-width placeholder="请输入需要解密的内容"></mu-text-field>
         </mu-col>
         <mu-col span="4">
-          <mu-button color="success" @click="doDecrypt">解密并接收</mu-button>
+          <mu-button color="success" @click="doDecrypt" small>解密并接收</mu-button>
+          <br/> <br/>
+          <mu-button   @click="clearChatInfo" small>清空</mu-button>
         </mu-col>
       </mu-row>
 
@@ -57,8 +61,9 @@
   import Message from 'muse-ui-message';
   import 'muse-ui-message/dist/muse-ui-message.css';
   import Vue from 'vue'
+  import Toast from 'muse-ui-toast';
 
-
+  Vue.use(Toast);
   Vue.use(Message);
 
   const CryptoJS = require("crypto-js");
@@ -77,21 +82,22 @@
     methods: {
       doSend() {
         if (this.aesKey == null || this.aesKey.length < 1) {
-          Message.alert('请输入秘钥key', '错误提示');
+          Toast.error('请输入秘钥key');
           return;
         }
         if (this.word == null || this.word.length < 1) {
-          Message.alert('请输入文本内容', '错误提示');
+          Toast.error('请输入文本内容');
           return;
         }
 
         let encryptMsg = encryption.encryptByAES(this.word, this.getAESKey());
         this.$refs.messageList.appendMessage({userType: 1, content: this.word})
         this.$refs.alertDialog.showMessage({"title": "请复制以下并通过IM发送", content: encryptMsg});
+        this.clearWord()
       },
       doDecrypt() {
         if (this.aesKey == null || this.aesKey.length < 1) {
-          Message.alert('请输入秘钥key', '错误提示');
+          Toast.error('请输入秘钥key');
           return;
         }
         let chatInfo = this.chatInfo.trim()
@@ -100,16 +106,17 @@
           idx = chatInfo.lastIndexOf('：')
         }
         if (idx != -1) {
-          chatInfo = chatInfo.substr(idx+1)
+          chatInfo = chatInfo.substr(idx + 1)
         }
 
         if (chatInfo == null || chatInfo.length < 1) {
-          Message.alert('请输入待解密内容', '错误提示');
+          Toast.error('请输入待解密内容');
           return;
         }
         let msg = encryption.decryptByAES(chatInfo, this.getAESKey());
         if (msg && msg.length > 1) {
           this.$refs.messageList.appendMessage({userType: 2, content: msg})
+          this.clearChatInfo()
         } else {
           Message.alert('解密失败，请确认消息体是否复制完整或者密码是否正确！', '错误提示');
         }
@@ -128,6 +135,12 @@
       },
       clear() {
         this.$refs.messageList.clear();
+      },
+      clearWord() {
+        this.word = ''
+      },
+      clearChatInfo() {
+        this.chatInfo = ''
       }
     },
     component: {
