@@ -11,18 +11,35 @@
         <mu-list slot="content">
           <mu-list-item button>
             <mu-list-item-content>
-              <mu-list-item-title>Menu Item 1</mu-list-item-title>
+              <mu-list-item-title>Under Construction</mu-list-item-title>
             </mu-list-item-content>
           </mu-list-item>
-          <mu-list-item button>
+          <mu-list-item button @click="about">
             <mu-list-item-content>
-              <mu-list-item-title>Menu Item 2</mu-list-item-title>
+              <mu-list-item-title>About</mu-list-item-title>
             </mu-list-item-content>
           </mu-list-item>
         </mu-list>
       </mu-menu>
     </mu-appbar>
     <silent-chat></silent-chat>
+
+
+    <mu-dialog title="Abount" width="80%" :open.sync="showAbout">
+      <p>
+        Silent chat is a encryption tool when you need to encrypt your message communication via IM!
+      </p>
+
+      <p>
+        It's based on AES encryption algorithm , the security level is based on your password length and complex.
+      </p>
+      <p>
+        The password must 4*N length.
+
+      </p>
+
+      <mu-button slot="actions" flat color="primary" @click="showAbout=false">Close</mu-button>
+    </mu-dialog>
   </div>
 </template>
 
@@ -33,6 +50,16 @@
     name: 'App',
     components: {
       SilentChat
+    },
+    data() {
+      return {
+        showAbout: false
+      }
+    },
+    methods: {
+      about() {
+        this.showAbout = true
+      }
     }
   }
 </script>
