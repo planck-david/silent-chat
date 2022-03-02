@@ -1,7 +1,7 @@
 <template>
   <div>
     <mu-paper :z-depth="1" class="demo-list-wrap">
-      <mu-sub-header>今天</mu-sub-header>
+      <mu-sub-header>Message List</mu-sub-header>
       <div v-for="message in messageList" :key="message.msgId" class="demo-list-wrap">
 
 
@@ -13,10 +13,10 @@
         </div>
 
 
-        <div class="message-container" >
-          <span style="color: rgba(0, 0, 0, .87)">{{message.userType==1? "YOU":"HE/SHE"}}</span> &nbsp;
-          {{message.sendTimeDesc}}<br/>
-          <span style="word-break: break-all;word-wrap:break-word;">{{message.content}}</span>
+        <div class="message-container">
+          <span style="color: #efefef">{{message.userType==1? "YOU":"HE/SHE"}}           {{message.sendTimeDesc}}</span> &nbsp;
+          <br/>
+          <pre style="word-break: break-all;word-wrap:break-word;font-size: 1.1em;">{{message.content}}</pre>
         </div>
 
 
@@ -52,7 +52,7 @@
     },
     methods: {
       appendMessage(data) {
-        this.messageList.push(packMessage(data))
+        this.messageList = [packMessage(data)].concat(this.messageList)
       },
       clear() {
         this.messageList = []
@@ -70,5 +70,8 @@
 
   .message-container {
     margin-left: 50px;
+    background-color: #59b269;
+    padding: 10px;
+    border-radius:10px;
   }
 </style>

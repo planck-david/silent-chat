@@ -7,22 +7,14 @@
       <mu-row>
         <mu-col span="12">
           <mu-text-field v-model="aesKey" label="加密KEY" label-float></mu-text-field>
-          <mu-button @click="randomMakeAESKey" small color="primary">随机生成</mu-button>
+          <mu-button @click="randomMakeAESKey" small color="primary">{{$t('randomGenTxt')}}</mu-button>
 
 
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <mu-button @click="clear" small color="warning">清空消息</mu-button>
+          <mu-button @click="clear" small color="warning">{{$t('clearMsgTxt')}}</mu-button>
 
         </mu-col>
       </mu-row>
-
-      <div style="max-height: 500px;overflow-y: auto;">
-        <mu-row>
-          <mu-col span="12">
-            <message-list ref="messageList"></message-list>
-          </mu-col>
-        </mu-row>
-      </div>
 
       <mu-row>
         <mu-col span="8">
@@ -32,7 +24,7 @@
         <mu-col span="4">
           <mu-button color="primary" @click="doSend" small>发送</mu-button>
           <br/> <br/>
-          <mu-button   @click="clearWord" small>清空</mu-button>
+          <mu-button   @click="clearWord" small>{{$t('clearTxt')}}</mu-button>
         </mu-col>
       </mu-row>
 
@@ -45,9 +37,19 @@
         <mu-col span="4">
           <mu-button color="success" @click="doDecrypt" small>解密并接收</mu-button>
           <br/> <br/>
-          <mu-button   @click="clearChatInfo" small>清空</mu-button>
+          <mu-button   @click="clearChatInfo" small>{{$t('clearTxt')}}</mu-button>
         </mu-col>
       </mu-row>
+
+
+      <div style="overflow-y: auto;">
+        <mu-row>
+          <mu-col span="12">
+            <message-list ref="messageList"></message-list>
+          </mu-col>
+        </mu-row>
+      </div>
+
 
     </mu-container>
 
@@ -118,7 +120,7 @@
           this.$refs.messageList.appendMessage({userType: 2, content: msg})
           this.clearChatInfo()
         } else {
-          Message.alert('解密失败，请确认消息体是否复制完整或者密码是否正确！', '错误提示');
+          Toast.error('解密失败，请确认消息体是否复制完整或者密码是否正确！');
         }
       },
       getAESKey() {
