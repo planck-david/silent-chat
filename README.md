@@ -29,10 +29,14 @@ OK, enjoy it. don't forget to star my github repo below:
 [https://github.com/planck-david/silent-chat](https://github.com/planck-david/silent-chat)
 
 
+## Demo
+
+you can try it via(serviced by github.io):
+
+[https://planck-david.github.io/silent-chat/](https://planck-david.github.io/silent-chat/)
 
 
-
-
+you can self-deploy by fork .
 
 
 ## Project setup
