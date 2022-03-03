@@ -37,7 +37,10 @@
         The password must 4*N length.
 
       </p>
+      <p>
+        the source code : <a herf="https://github.com/planck-david/silent-chat" target="_blank">silent-chat github 仓库</a>
 
+      </p>
       <mu-button slot="actions" flat color="primary" @click="showAbout=false">Close</mu-button>
     </mu-dialog>
   </div>
