@@ -34,6 +34,21 @@ The password must 4*N length.
 7. you and your friend should use the same encryption password.
 
 
+### Public key
+
+We agree that abcdabcdabcdabcd is the public password, if you need to publish some public encrypted information, please use this password. 
+
+```text
+abcdabcdabcdabcd
+```
+
+he following is the information encrypted by this password, you can try to see if the data can be decoded. 
+
+```text
+4867A6548168054ED9269976DC3137F64C66540B8FD6115689FC51528A03A5E0
+```
+
+
 
 OK, enjoy it. don't forget to star my github repo below:
 
@@ -50,6 +65,27 @@ OK, enjoy it. don't forget to star my github repo below:
 6. 收到你朋友的消息，只是重复你所做的；
 7. 您和您的朋友应该使用相同的加密密码。
 
+
+
+### 公共钥匙
+
+我们约定 abcdabcdabcdabcd 为公共密码，如果你需要发布一些公共的若加密信息，请使用此密码.
+```text
+abcdabcdabcdabcd
+```
+
+以下是通过此密码加密的信息，你可以试试是否能够解码出数据。
+
+```text
+4867A6548168054ED9269976DC3137F64C66540B8FD6115689FC51528A03A5E0
+```
+
+好，享受吧。 不要忘记在下面为我的 github 仓库点赞如果你是一个开发者： 
+
+[https://github.com/planck-david/silent-chat](https://github.com/planck-david/silent-chat)
+
+
+
 ## Demo
 
 you can try it via(serviced by github.io):
@@ -60,7 +96,7 @@ you can try it via(serviced by github.io):
 you can self-deploy by fork .
 
 
-## Demo
+## 示例和使用
 
 您可以通过（由 github.io 提供服务）体验尝试：
 
