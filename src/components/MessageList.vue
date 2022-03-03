@@ -1,11 +1,11 @@
 <template>
   <div>
     <mu-paper :z-depth="1" class="demo-list-wrap">
-      <mu-sub-header>Message List</mu-sub-header>
+      <mu-sub-header>Message List({{messageList.length}})</mu-sub-header>
       <div v-for="message in messageList" :key="message.msgId" class="demo-list-wrap">
 
 
-        <div style="float: left;">
+        <div style="float: left; padding: 5px;">
           <mu-avatar>
             <img v-if="message.userType==1" src="../assets/images/avatar1.jpg">
             <img v-else src="../assets/images/avatar2.jpg">
@@ -14,9 +14,11 @@
 
 
         <div class="message-container">
-          <span style="color: #efefef">{{message.userType==1? "YOU":"HE/SHE"}}           {{message.sendTimeDesc}}</span> &nbsp;
+          <span style="color: #616161;">{{message.userType==1? "ME":"HE/SHE"}}&nbsp;&nbsp;&nbsp;&nbsp;{{message.sendTimeDesc}}</span>
+          &nbsp;
           <br/>
-          <pre style="word-break: break-all;word-wrap:break-word;font-size: 1.1em;">{{message.content}}</pre>
+          <pre
+            style="word-break: break-all;word-wrap:break-word;font-size: 1.1em; color: #3e3e3e;">{{message.content}}</pre>
         </div>
 
 
@@ -64,14 +66,15 @@
 <style>
   .demo-list-wrap {
     width: 100%;
-    padding: 10px 3px 5px 3px;
+    padding: 10px;
     text-align: left;
   }
 
   .message-container {
-    margin-left: 50px;
-    background-color: #59b269;
     padding: 10px;
-    border-radius:10px;
+    border: 2px solid #59b269;
+    border-radius: 10px;
   }
+
+
 </style>

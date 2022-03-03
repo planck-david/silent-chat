@@ -133,7 +133,7 @@
         return parse;
       },
       randomMakeAESKey() {
-        this.aesKey = encryption.randomKey(16)
+        this.aesKey = encryption.randomKey(32)
       },
       clear() {
         this.$refs.messageList.clear();
