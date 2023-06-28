@@ -6,7 +6,7 @@
     <mu-container class="demo-container is-stripe">
       <mu-row>
         <mu-col span="12">
-          <mu-text-field v-model="nickName" label="昵称" label-float></mu-text-field>
+          <mu-text-field v-model="nickName" label="昵称" label-float @change="nickNameChange"></mu-text-field>
         </mu-col>
       </mu-row>
 
@@ -14,7 +14,8 @@
         <mu-col span="12">
           <mu-text-field v-model="aesKey" label="加密KEY" label-float></mu-text-field>
           <mu-button @click="randomMakeAESKey" small color="primary">{{$t('randomGenTxt')}}</mu-button>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <mu-button @click="saveAESKey" small color="primary">Save</mu-button>
+
 
         </mu-col>
       </mu-row>
@@ -84,6 +85,16 @@
         nickName: '',
         chatInfo: '',
         keyMap: {}
+      }
+    },
+    mounted() {
+      let aesKey = localStorage.getItem('aesKey');
+      let nickName = localStorage.getItem('nickName');
+      if (aesKey !== null && aesKey !== undefined && aesKey != '') {
+        this.aesKey = aesKey;
+      }
+      if (nickName != null && nickName != '') {
+        this.nickName = nickName;
       }
     },
     methods: {
@@ -156,6 +167,12 @@
       },
       clearChatInfo() {
         this.chatInfo = ''
+      },
+      saveAESKey() {
+        localStorage.setItem('aesKey', this.aesKey);
+      },
+      nickNameChange() {
+        localStorage.setItem('nickName', this.nickName);
       }
     },
     component: {

@@ -38,8 +38,23 @@
 
       </p>
       <p>
-        the source code : <b>https://github.com/planck-david/silent-chat</b>
+        the source code : <a href="https://github.com/planck-david/silent-chat">https://github.com/planck-david/silent-chat</a>
       </p>
+
+
+      <p>
+        当您需要通过 IM 加密消息通信时，Silent chat 是一个不错的加密工具！
+      </p>
+
+      <p>
+        它基于AES加密算法，安全级别基于您的密码长度和复杂性。
+      </p>
+      <p>
+        密码长度必须为 4*N。
+      </p>
+
+
+
       <mu-button slot="actions" flat color="primary" @click="showAbout=false">Close</mu-button>
     </mu-dialog>
   </div>
